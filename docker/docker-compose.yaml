@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  gointegration_test_mysql:
+    container_name: gointegration_test_mysql
+    build:
+      dockerfile: mysql/Dockerfile
+    environment:
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      #- ./mysql/mysql-dump:/docker-entrypoint-initdb.d
+      - ${GO_INTEGRATION_TEST_SQL_FILE_PATH}:/docker-entrypoint-initdb.d
+    ports:
+      - "3358:3306"
+    expose:
+      - "3358:3306"
+  gointegration_test_redis:
+    container_name: gointegration_test_redis
+    build:
+      dockerfile: redis/Dockerfile
+    ports:
+      - "6358:6379"
+    expose:
+      - "6358-6379"
