@@ -5,7 +5,7 @@ import "testing"
 func TestConfigs_NewUnit(t *testing.T) {
 	cfg := Configs{
 		DatabaseName: "slaDB",
-		SQLFilePath:  "/docker/mysql/mysql-dump",
+		SQLFilePath:  "/pkg/mysql/mysql-dump",
 	}
 	db, tearDown, err := cfg.NewUnit(t)
 

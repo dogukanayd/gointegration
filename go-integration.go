@@ -81,7 +81,7 @@ func (cf Configs) NewUnit(t *testing.T) (*sql.DB, func(), error) {
 		return mysqlContainerInspectLogs.getConnectionAndTearDown(t, cf.DatabaseName)
 	}
 
-	dockerComposePath := basePath + "/docker/docker-compose.yaml"
+	dockerComposePath := basePath + "/pkg/docker-compose.yaml"
 	dockerComposeCommand := exec.Command("docker", "compose", "-f", dockerComposePath, "up", "-d")
 
 	if err := dockerComposeCommand.Run(); err != nil {
